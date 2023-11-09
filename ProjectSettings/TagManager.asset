@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - obstacle
+  - Car
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Grass
+    uniqueID: 2271814351
+    locked: 0
+  - name: Road
+    uniqueID: 2767764285
+    locked: 0
+  - name: Car
+    uniqueID: 1895136283
     locked: 0
