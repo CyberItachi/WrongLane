@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class CarController : MonoBehaviour
 {
@@ -31,7 +26,6 @@ public class CarController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.collider.tag == "Car"){
-            Debug.Log("PlayerDied");
             Destroy(gameObject);
             gameOver.SetActive(true);
             for (int i=0; i<disableObject.Length; i++){
