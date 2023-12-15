@@ -9,13 +9,30 @@ public class CarController : MonoBehaviour
     private Vector2 targetPos;
     [SerializeField] private GameObject gameOver;
     [SerializeField] private GameObject[] disableObject;
+    private Vector2 startTouchPos;
+    private Vector2 endTouchPos;
 
     private void Start() {
         targetPos = transform.position;
     }
     
     private void Update() {
+
+
         transform.position = Vector2.MoveTowards(transform.position,targetPos,speed*Time.deltaTime);
+
+        if(Input.touchCount>0&&Input.GetTouch(0).phase==TouchPhase.Began){
+            startTouchPos = Input.GetTouch(0).position;
+        }
+        if(Input.touchCount>0&&Input.GetTouch(0).phase==TouchPhase.Ended){
+           endTouchPos = Input.GetTouch(0).position;
+           if(endTouchPos.x>startTouchPos.x){
+                targetPos = new Vector2(transform.position.x + value, transform.position.y);
+           }
+           else if (endTouchPos.x<startTouchPos.x){
+                targetPos = new Vector2(transform.position.x - value, transform.position.y);
+           }
+        }
         if((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && transform.position.x<maxMov){
             targetPos = new Vector2(transform.position.x + value, transform.position.y);
         }
